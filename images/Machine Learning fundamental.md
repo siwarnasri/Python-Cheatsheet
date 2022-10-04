@@ -1,4 +1,4 @@
-# Machine Learning fondamental:
+# Machine Learning fundamental:
 
 ### Supervised Learning:
 
