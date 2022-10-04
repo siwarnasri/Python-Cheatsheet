@@ -2,17 +2,19 @@
 
 ### Supervised Learning:
 
-![Screenshot](https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Supervised%20learning.webp)
+<!--![Screenshot](https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Supervised%20learning.webp)-->
 
-<img src="https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Supervised%20learning.webp" width="400" height="400">
+<img src="https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Supervised%20learning.webp" width="500" height="500">
 
 ##### Classification:
 
-![Screenshot](https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Classification.webp)
+<!--![Screenshot](https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Classification.webp)-->
+<img src="https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Classification.webp" width="500" height="500">
 
 ##### Regression:
 
-![Screenshot](https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Regression.webp)
+<!--![Screenshot](https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Regression.webp)-->
+<img src="https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Regression.webp" width="500" height="500">
 
 ### UnSupervised Learning:
 
