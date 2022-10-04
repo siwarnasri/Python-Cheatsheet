@@ -1,3 +1,35 @@
-# Classification:
+# Machine Learning fondamental:
+
+### Supervised Learning:
+
+![Screenshot](https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Supervised%20learning.webp)
+
+##### Classification:
 
 ![Screenshot](https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Classification.webp)
+
+##### Regression:
+
+![Screenshot](https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Regression.webp)
+
+### UnSupervised Learning:
+
+![Screenshot](https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/UnSupervised%20learning.webp)
+
+##### Clustering:
+
+![Screenshot](https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Clustering.webp)
+
+### Exploratory Data Analysis:
+
+##### Data Imputation:
+
+![Screenshot](https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Data%20imputation.webp)
+
+##### Data Wrangling:
+
+![Screenshot](https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Data%20wrangling.webp)
+
+### Evaluation Metrics:
+
+![Screenshot](https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Evaluation%20metrics.webp)
