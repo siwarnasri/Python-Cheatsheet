@@ -4,7 +4,7 @@
 
 ![Screenshot](https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Supervised%20learning.webp)
 
-<img src="[https://your-image-url.type](https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Supervised%20learning.webp)" width="100" height="100">
+<img src="https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Supervised%20learning.webp" width="400" height="400">
 
 ##### Classification:
 
