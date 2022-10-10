@@ -1,15 +1,3 @@
-# Machine Learning fundamental:
-
-[Definitions of:](https://github.com/siwarnasri/Python-Cheatsheet/blob/main/Machine%20Learning%20fundamental.md)
-
-##### Supervised Learning
-
-##### UnSupervised Learning
-
-##### Exploratory Data Analysis
-
-##### Evaluation Metrics
-
 # Machine Learning:
 
 Machine Learning is making the computer learn from studying data and statistics. 
@@ -19,6 +7,10 @@ Machine Learning is a step into the direction of artificial intelligence (AI).
 Machine Learning is a program that analyses data and learns to predict the outcome. 
 
 ### Where To Start?
+
+[Machine Learning fundamental](https://github.com/siwarnasri/Python-Cheatsheet/blob/main/Machine%20Learning%20fundamental.md)
+
+[Linear Regression and Activation functions]()
 
 [Machine Learning Tutorial](https://github.com/siwarnasri/Snippet-Library/blob/main/Python%20tutorials/Machine%20Learning.md)
 
