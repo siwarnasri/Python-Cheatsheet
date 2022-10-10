@@ -10,7 +10,7 @@ Machine Learning is a program that analyses data and learns to predict the outco
 
 [Machine Learning fundamental](https://github.com/siwarnasri/Python-Cheatsheet/blob/main/Machine%20Learning%20fundamental.md)
 
-[Linear Regression and Activation functions]()
+[Linear Regression and Activation functions](https://github.com/siwarnasri/Python-Cheatsheet/blob/main/Linear%20regression%20and%20activation%20functions.md)
 
 [Machine Learning Tutorial](https://github.com/siwarnasri/Snippet-Library/blob/main/Python%20tutorials/Machine%20Learning.md)
 
