@@ -7,3 +7,7 @@
 # RNNs:
 
 <img src="https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Sup/RNNs.webp" width="500" height="500">
+
+# Ruccurants:
+
+<img src="" width="500" height="500">
