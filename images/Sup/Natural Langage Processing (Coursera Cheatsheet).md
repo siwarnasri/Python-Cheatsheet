@@ -11,3 +11,9 @@
 # Ruccurant Neural Network:
 
 <img src="https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Sup/recurrent%20neural%20Networks.webp" width="500" height="500">
+
+# Sequence to Sequence:
+
+<img src="https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Sup/sequence%20to%20sequence%201.webp" width="500" height="500">
+
+<img src="" width="500" height="500">
