@@ -8,6 +8,6 @@
 
 <img src="https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Sup/RNNs.webp" width="500" height="500">
 
-# Ruccurants:
+# Ruccurant Neural Network:
 
-<img src="" width="500" height="500">
+<img src="https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/Sup/recurrent%20neural%20Networks.webp" width="500" height="500">
