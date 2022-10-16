@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<h2 id="title1">Linear regression:</h2>
+<h1 id="title1">Linear regression:</h2>
 
 
 <p id="image1"></p>
@@ -24,7 +24,7 @@ display_image('https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/
 
 
 
-<h2 id="title1">Activation functions:</h2>
+<h1 id="title1">Activation functions:</h2>
 
 <p id="image2"></p>
 
@@ -44,7 +44,7 @@ display_image('https://github.com/siwarnasri/Python-Cheatsheet/blob/main/images/
 </script>
 
 <script>
-document.getElementById("title1").style.color = "blue";
+document.getElementById("title1").style.color = "Tomato"; 
 document.getElementById("title1").style.fontFamily = "Arial";
 document.getElementById("title1").style.fontSize = "larger";
 </script>
