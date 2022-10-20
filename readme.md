@@ -18,9 +18,7 @@ Machine Learning is a program that analyses data and learns to predict the outco
 
 Python has a set of built-in math functions, including an extensive math module, that allows you to perform mathematical tasks on numbers.
 
-### Built-in Math Functions:
-
-[Python Math Tutorial](https://github.com/siwarnasri/Snippet-Library/blob/main/Python%20tutorials/Python%20Math.md)
+[Built-in Math Functions Tutorial](https://github.com/siwarnasri/Snippet-Library/blob/main/Python%20tutorials/Python%20Math.md)
 
 # Python RegEx:
 
@@ -28,9 +26,7 @@ A RegEx, or Regular Expression, is a sequence of characters that forms a search 
 
 RegEx can be used to check if a string contains the specified search pattern.
 
-### RegEx Module:
-
-[Python RegEx Tutorial](https://github.com/siwarnasri/Snippet-Library/blob/main/Python%20tutorials/Python%20RegEx.md)
+[RegEx Tutorial](https://github.com/siwarnasri/Snippet-Library/blob/main/Python%20tutorials/Python%20RegEx.md)
 
 # Python Try Except:
 
@@ -42,8 +38,6 @@ The else block lets you execute code when there is no error.
 
 The finally block lets you execute code, regardless of the result of the try- and except blocks.
 
-### Exception Handling:
-
-[Python Try Except Tutorial](https://github.com/siwarnasri/Snippet-Library/blob/main/Python%20tutorials/Python%20Try%20Except.md)
+[Exception Handling Tutorial](https://github.com/siwarnasri/Snippet-Library/blob/main/Python%20tutorials/Python%20Try%20Except.md)
 
 
