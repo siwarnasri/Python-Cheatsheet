@@ -1,0 +1,379 @@
+<h1 id="python-regex-">Python RegEx:</h1>
+<p>A RegEx, or Regular Expression, is a sequence of characters that forms a search pattern.</p>
+<p>RegEx can be used to check if a string contains the specified search pattern.</p>
+<h3 id="regex-module-">RegEx Module:</h3>
+<p>Python has a built-in package called re, which can be used to work with Regular Expressions.</p>
+<p>Import the re module:</p>
+<pre><code><span class="hljs-keyword">import</span> re
+</code></pre><h3 id="regex-in-python-">RegEx in Python:</h3>
+<p>When you have imported the re module, you can start using regular expressions:</p>
+<h5 id="search-the-string-to-see-if-it-starts-with-the-and-ends-with-spain-">Search the string to see if it starts with &quot;The&quot; and ends with &quot;Spain&quot;:</h5>
+<pre><code><span class="hljs-built_in">import</span> re
+
+<span class="hljs-attr">txt</span> = <span class="hljs-string">"The rain in Spain"</span>
+<span class="hljs-attr">x</span> = re.search(<span class="hljs-string">"^The.*Spain$"</span>, txt)
+</code></pre><blockquote>
+<p>YES! We have a match!</p>
+</blockquote>
+<h3 id="regex-functions-">RegEx Functions:</h3>
+<p>The re module offers a set of functions that allows us to search a string for a match:</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>findall</td>
+<td>Returns a list containing all matches</td>
+</tr>
+<tr>
+<td>search</td>
+<td>Returns a Match object if there is a match anywhere in the string</td>
+</tr>
+<tr>
+<td>split</td>
+<td>Returns a list where the string has been split at each match</td>
+</tr>
+<tr>
+<td>sub</td>
+<td>Replaces one or many matches with a string</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metacharacters-">Metacharacters:</h3>
+<p>Metacharacters are characters with a special meaning:</p>
+<table>
+<thead>
+<tr>
+<th>Character</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[]</td>
+<td>A set of characters</td>
+<td>&quot;[a-m]&quot;</td>
+</tr>
+<tr>
+<td>\</td>
+<td>Signals a special sequence (can also be used to escape special characters)</td>
+<td>&quot;\d&quot;</td>
+</tr>
+<tr>
+<td>.</td>
+<td>Any character (except newline character)</td>
+<td>&quot;he..o&quot;</td>
+</tr>
+<tr>
+<td>^</td>
+<td>Starts with</td>
+<td>&quot;^hello&quot;</td>
+</tr>
+<tr>
+<td>$</td>
+<td>Ends with</td>
+<td>&quot;planet$&quot;</td>
+</tr>
+<tr>
+<td>*</td>
+<td>Zero or more occurrences</td>
+<td>&quot;he.*o&quot;</td>
+</tr>
+<tr>
+<td>+</td>
+<td>One or more occurrences</td>
+<td>&quot;he.+o&quot;</td>
+</tr>
+<tr>
+<td>?</td>
+<td>Zero or one occurrences</td>
+<td>&quot;he.?o&quot;</td>
+</tr>
+<tr>
+<td>{}</td>
+<td>Exactly the specified number of occurrences</td>
+<td>&quot;he.{2}o&quot;</td>
+</tr>
+<tr>
+<td>\</td>
+<td></td>
+<td>Either or</td>
+<td>&quot;falls\</td>
+<td>stays&quot;</td>
+</tr>
+<tr>
+<td>()</td>
+<td>Capture and group</td>
+</tr>
+</tbody>
+</table>
+<h3 id="special-sequences-">Special Sequences:</h3>
+<p>A special sequence is a \ followed by one of the characters in the list below, and has a special meaning:</p>
+<table>
+<thead>
+<tr>
+<th>Character</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\A</td>
+<td>Returns a match if the specified characters are at the beginning of the string</td>
+<td>&quot;\AThe&quot;</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>Returns a match where the specified characters are at the beginning or at the end of a word (the &quot;r&quot; in the beginning is making sure that the string is being treated as a &quot;raw string&quot;)</td>
+<td>r&quot;\bain&quot;, r&quot;ain\b&quot;</td>
+</tr>
+<tr>
+<td>\B</td>
+<td>Returns a match where the specified characters are present, but NOT at the beginning (or at the end) of a word (the &quot;r&quot; in the beginning is making sure that the string is being treated as a &quot;raw string&quot;)</td>
+<td>r&quot;\Bain&quot;, r&quot;ain\B&quot;</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>Returns a match where the string contains digits (numbers from 0-9)</td>
+<td>&quot;\d&quot;</td>
+</tr>
+<tr>
+<td>\D</td>
+<td>Returns a match where the string DOES NOT contain digits</td>
+<td>&quot;\D&quot;</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>Returns a match where the string contains a white space character</td>
+<td>&quot;\s&quot;</td>
+</tr>
+<tr>
+<td>\S</td>
+<td>Returns a match where the string DOES NOT contain a white space character</td>
+<td>&quot;\S&quot;</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>Returns a match where the string contains any word characters (characters from a to Z, digits from 0-9, and the underscore _ character)</td>
+<td>&quot;\w&quot;</td>
+</tr>
+<tr>
+<td>\W</td>
+<td>Returns a match where the string DOES NOT contain any word characters</td>
+<td>&quot;\W&quot;</td>
+</tr>
+<tr>
+<td>\Z</td>
+<td>Returns a match if the specified characters are at the end of the string</td>
+<td>&quot;Spain\Z&quot;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sets-">Sets:</h3>
+<p>A set is a set of characters inside a pair of square brackets [] with a special meaning:</p>
+<table>
+<thead>
+<tr>
+<th>Set</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[arn]</td>
+<td>Returns a match where one of the specified characters (a, r, or n) is present</td>
+</tr>
+<tr>
+<td>[a-n]</td>
+<td>Returns a match for any lower case character, alphabetically between a and n</td>
+</tr>
+<tr>
+<td>[^arn]</td>
+<td>Returns a match for any character EXCEPT a, r, and n</td>
+</tr>
+<tr>
+<td>[0123]</td>
+<td>Returns a match where any of the specified digits (0, 1, 2, or 3) are present</td>
+</tr>
+<tr>
+<td>[0-9]</td>
+<td>Returns a match for any digit between 0 and 9</td>
+</tr>
+<tr>
+<td>[0-5][0-9]</td>
+<td>Returns a match for any two-digit numbers from 00 and 59</td>
+</tr>
+<tr>
+<td>[a-zA-Z]</td>
+<td>Returns a match for any character alphabetically between a and z, lower case OR upper case</td>
+</tr>
+<tr>
+<td>[+]</td>
+<td>In sets, +, *, ., \</td>
+<td>, (), $,{} has no special meaning, so [+] means: return a match for any + character in the string</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-findall-function-">The findall() Function:</h3>
+<p>The findall() function returns a list containing all matches.</p>
+<blockquote>
+<p>Print a list of all matches:</p>
+</blockquote>
+<pre><code><span class="hljs-keyword">import</span> re
+
+txt = <span class="hljs-string">"The rain in Spain"</span>
+x = re.<span class="hljs-keyword">findall</span>(<span class="hljs-string">"ai"</span>, txt)
+<span class="hljs-keyword">print</span>(x)
+</code></pre><blockquote>
+<p>[&#39;ai&#39;, &#39;ai&#39;]</p>
+</blockquote>
+<p>The list contains the matches in the order they are found.</p>
+<p>If no matches are found, an empty list is returned:</p>
+<blockquote>
+<p>Return an empty list if no match was found:</p>
+</blockquote>
+<pre><code><span class="hljs-keyword">import</span> re
+
+txt = <span class="hljs-string">"The rain in Spain"</span>
+x = re.<span class="hljs-keyword">findall</span>(<span class="hljs-string">"Portugal"</span>, txt)
+<span class="hljs-keyword">print</span>(x)
+</code></pre><blockquote>
+<p>[]
+No match</p>
+</blockquote>
+<h3 id="the-search-function-">The search() Function:</h3>
+<p>The search() function searches the string for a match, and returns a Match object if there is a match.</p>
+<p>If there is more than one match, only the first occurrence of the match will be returned:</p>
+<blockquote>
+<p>Search for the first white-space character in the string:</p>
+</blockquote>
+<pre><code><span class="hljs-built_in">import</span> re
+
+<span class="hljs-attr">txt</span> = <span class="hljs-string">"The rain in Spain"</span>
+<span class="hljs-attr">x</span> = re.search(<span class="hljs-string">"\s"</span>, txt)
+
+print(<span class="hljs-string">"The first white-space character is located in position:"</span>, x.start())
+</code></pre><blockquote>
+<p>The first white-space character is located in position: 3</p>
+</blockquote>
+<p>If no matches are found, the value None is returned:</p>
+<blockquote>
+<p>Make a search that returns no match:</p>
+</blockquote>
+<pre><code><span class="hljs-built_in">import</span> re
+
+<span class="hljs-attr">txt</span> = <span class="hljs-string">"The rain in Spain"</span>
+<span class="hljs-attr">x</span> = re.search(<span class="hljs-string">"Portugal"</span>, txt)
+print(x)
+</code></pre><blockquote>
+<p>None</p>
+</blockquote>
+<h3 id="the-split-function-">The split() Function:</h3>
+<p>The split() function returns a list where the string has been split at each match:</p>
+<blockquote>
+<p>Split at each white-space character:</p>
+</blockquote>
+<pre><code><span class="hljs-keyword">import</span> re
+
+txt = <span class="hljs-string">"The rain in Spain"</span>
+x = re.<span class="hljs-built_in">split</span>(<span class="hljs-string">"\s"</span>, txt)
+<span class="hljs-built_in">print</span>(x)
+</code></pre><blockquote>
+<p>[&#39;The&#39;, &#39;rain&#39;, &#39;in&#39;, &#39;Spain&#39;]</p>
+</blockquote>
+<p>You can control the number of occurrences by specifying the maxsplit parameter:</p>
+<blockquote>
+<p>Split the string only at the first occurrence:</p>
+</blockquote>
+<pre><code><span class="hljs-keyword">import</span> re
+
+txt = <span class="hljs-string">"The rain in Spain"</span>
+x = re.<span class="hljs-built_in">split</span>(<span class="hljs-string">"\s"</span>, txt, <span class="hljs-number">1</span>)
+<span class="hljs-built_in">print</span>(x)
+</code></pre><blockquote>
+<p>[&#39;The&#39;, &#39;rain in Spain&#39;]</p>
+</blockquote>
+<h3 id="the-sub-function-">The sub() Function:</h3>
+<p>The sub() function replaces the matches with the text of your choice:</p>
+<blockquote>
+<p>Replace every white-space character with the number 9:</p>
+</blockquote>
+<pre><code><span class="hljs-built_in">import</span> re
+
+<span class="hljs-attr">txt</span> = <span class="hljs-string">"The rain in Spain"</span>
+<span class="hljs-attr">x</span> = re.sub(<span class="hljs-string">"\s"</span>, <span class="hljs-string">"9"</span>, txt)
+print(x)
+</code></pre><blockquote>
+<p>The9rain9in9Spain</p>
+</blockquote>
+<p>You can control the number of replacements by specifying the count parameter:</p>
+<blockquote>
+<p>Replace the first 2 occurrences:</p>
+</blockquote>
+<pre><code><span class="hljs-built_in">import</span> re
+
+<span class="hljs-attr">txt</span> = <span class="hljs-string">"The rain in Spain"</span>
+<span class="hljs-attr">x</span> = re.sub(<span class="hljs-string">"\s"</span>, <span class="hljs-string">"9"</span>, txt, <span class="hljs-number">2</span>)
+print(x)
+</code></pre><blockquote>
+<p>The9rain9in Spain</p>
+</blockquote>
+<h3 id="match-object-">Match Object:</h3>
+<p>A Match Object is an object containing information about the search and the result.</p>
+<pre><code class="lang-diff">+ Note: <span class="hljs-keyword">If</span> there <span class="hljs-keyword">is</span> no match, the value None will be returned, instead <span class="hljs-keyword">of</span> the Match <span class="hljs-keyword">Object</span>.
+</code></pre>
+<blockquote>
+<p>Do a search that will return a Match Object:</p>
+</blockquote>
+<pre><code><span class="hljs-built_in">import</span> re
+
+<span class="hljs-attr">txt</span> = <span class="hljs-string">"The rain in Spain"</span>
+<span class="hljs-attr">x</span> = re.search(<span class="hljs-string">"ai"</span>, txt)
+print(x) <span class="hljs-comment">#this will print an object</span>
+</code></pre><blockquote>
+<_sre.SRE_Match object; span=(5, 7), match='ai'>
+
+</blockquote>
+<p>The Match object has properties and methods used to retrieve information about the search, and the result:</p>
+<p>  .span() returns a tuple containing the start-, and end positions of the match.</p>
+<p>  .string returns the string passed into the function</p>
+<p>  .group() returns the part of the string where there was a match</p>
+<blockquote>
+<p>Print the position (start- and end-position) of the first match occurrence.
+The regular expression looks for any words that starts with an upper case &quot;S&quot;:</p>
+</blockquote>
+<pre><code><span class="hljs-keyword">import</span> re
+
+txt = <span class="hljs-string">"The rain in Spain"</span>
+x = re.search(<span class="hljs-string">r"\bS\w+"</span>, txt)
+print(x.span())
+</code></pre><blockquote>
+<p>(12, 17)</p>
+<p>Print the string passed into the function:</p>
+</blockquote>
+<pre><code><span class="hljs-keyword">import</span> re
+
+txt = <span class="hljs-string">"The rain in Spain"</span>
+x = re.search(<span class="hljs-string">r"\bS\w+"</span>, txt)
+print(x.string)
+</code></pre><blockquote>
+<p>The rain in Spain</p>
+<p>Print the part of the string where there was a match.
+The regular expression looks for any words that starts with an upper case &quot;S&quot;:</p>
+</blockquote>
+<pre><code><span class="hljs-keyword">import</span> re
+
+txt = <span class="hljs-string">"The rain in Spain"</span>
+x = re.search(<span class="hljs-string">r"\bS\w+"</span>, txt)
+print(x.group())
+</code></pre><blockquote>
+<p>Spain</p>
+</blockquote>
+<pre><code class="lang-diff">+ Note: <span class="hljs-keyword">If</span> there <span class="hljs-keyword">is</span> no match, the value None will be returned, instead <span class="hljs-keyword">of</span> the Match <span class="hljs-keyword">Object</span>.
+</code></pre>
