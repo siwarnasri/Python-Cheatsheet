@@ -1,0 +1,153 @@
+<h1 id="machine-learning-">Machine Learning:</h1>
+<p>$$\textcolor{<code>#0969DA</code>}{\text{Machine Learning is making the computer learn from studying data and statistics.}}$$</p>
+<p>$$\textcolor{<code>#0969DA</code>}{\text{Machine Learning is a step into the direction of artificial intelligence (AI).}}$$</p>
+<p>$$\textcolor{<code>#0969DA</code>}{\text{Machine Learning is a program that analyses data and learns to predict the outcome.}}$$</p>
+<h3 id="where-to-start-">Where To Start?</h3>
+<p>In this tutorial we will go back to mathematics and study statistics, and how to calculate important numbers based on data sets.</p>
+<p>We will also learn how to use various Python modules to get the answers we need.</p>
+<p>And we will learn how to make functions that are able to predict the outcome based on what we have learned.</p>
+<h3 id="data-set-">Data Set:</h3>
+<p>In the mind of a computer, a data set is any collection of data. It can be anything from an array to a complete database.</p>
+<p>Example of an array:</p>
+<blockquote>
+<p>[99,86,87,88,111,86,103,87,94,78,77,85,86]</p>
+</blockquote>
+<p>Example of a database:</p>
+<table>
+<thead>
+<tr>
+<th>Carname</th>
+<th>Color</th>
+<th>Age</th>
+<th>Speed</th>
+<th>AutoPass</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BMW</td>
+<td>red</td>
+<td>5</td>
+<td>99</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Volvo</td>
+<td>black</td>
+<td>7</td>
+<td>86</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>VW</td>
+<td>gray</td>
+<td>8</td>
+<td>87</td>
+<td>N</td>
+</tr>
+<tr>
+<td>VW</td>
+<td>white</td>
+<td>7</td>
+<td>88</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Ford</td>
+<td>white</td>
+<td>2</td>
+<td>111</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>VW</td>
+<td>white</td>
+<td>17</td>
+<td>86</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Tesla</td>
+<td>red</td>
+<td>2</td>
+<td>103</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>BMW</td>
+<td>black</td>
+<td>9</td>
+<td>87</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>Volvo</td>
+<td>gray</td>
+<td>4</td>
+<td>94</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Ford</td>
+<td>white</td>
+<td>11</td>
+<td>78</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Toyota</td>
+<td>gray</td>
+<td>12</td>
+<td>77</td>
+<td>N</td>
+</tr>
+<tr>
+<td>VW</td>
+<td>white</td>
+<td>9</td>
+<td>85</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Toyota</td>
+<td>blue</td>
+<td>6</td>
+<td>86</td>
+<td>Y</td>
+</tr>
+</tbody>
+</table>
+<p>By looking at the array, we can guess that the average value is probably around 80 or 90, and we are also able to determine the highest value and the lowest value, but what else can we do?</p>
+<p>And by looking at the database we can see that the most popular color is white, and the oldest car is 17 years, but what if we could predict if a car had an AutoPass, just by looking at the other values?</p>
+<p>That is what Machine Learning is for! Analyzing data and predicting the outcome!</p>
+<pre><code class="lang-diff">+ In Machine Learning <span class="hljs-keyword">it</span> <span class="hljs-keyword">is</span> common <span class="hljs-keyword">to</span> work <span class="hljs-keyword">with</span> very large data sets. 
++ In this tutorial we will <span class="hljs-keyword">try</span> <span class="hljs-keyword">to</span> make <span class="hljs-keyword">it</span> <span class="hljs-keyword">as</span> easy <span class="hljs-keyword">as</span> possible <span class="hljs-keyword">to</span> understand <span class="hljs-keyword">the</span> different concepts <span class="hljs-keyword">of</span> machine learning, <span class="hljs-keyword">and</span> we will work <span class="hljs-keyword">with</span> small easy-<span class="hljs-keyword">to</span>-understand data sets.
+</code></pre>
+<h3 id="data-types-">Data Types:</h3>
+<p>To analyze data, it is important to know what type of data we are dealing with.</p>
+<p>We can split the data types into three main categories:</p>
+<ul>
+<li>Numerical</li>
+<li>Categorical</li>
+<li>Ordinal</li>
+<li>Numerical data are numbers, and can be split into two numerical categories:</li>
+</ul>
+<h5 id="discrete-data-">Discrete Data:</h5>
+<ul>
+<li>numbers that are limited to integers. </li>
+<li>Example: The number of cars passing by.</li>
+</ul>
+<h5 id="continuous-data-">Continuous Data:</h5>
+<ul>
+<li>numbers that are of infinite value. </li>
+<li>Example: The price of an item, or the size of an item.</li>
+</ul>
+<h5 id="categorical-data-">Categorical data:</h5>
+<ul>
+<li>are values that cannot be measured up against each other. </li>
+<li>Example: a color value, or any yes/no values.</li>
+</ul>
+<p>Ordinal data are like categorical data, but can be measured up against each other. Example: school grades where A is better than B and so on.</p>
+<p>By knowing the data type of your data source, you will be able to know what technique to use when analyzing them.</p>
+<p>You will learn more about statistics and analyzing data in the next chapters.</p>
+<h1 id="machine-learning-mean-median-mode-">Machine Learning - Mean Median Mode:</h1>
