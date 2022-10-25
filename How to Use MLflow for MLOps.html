@@ -1,535 +1,253 @@
-How to Use MLflow for MLOps
-Despite the recent buzz, machine learning operations, or MLOps for short, is not really a new idea or a new field. In this article, we will discuss why new data scientists rarely dive deep into this field.
-blog image
-Table of Contents
-Why You Should Learn MLOps
-What is MLflow
-What Are the Components of MLflow
-MLflow Tracking
-MLflow Projects
-MLflow Models
-Model Registry
-How to Use MLflow for MLOps: An Example
-Preparing Data
-Set up and Use MLflow 
-Conclusion
-Despite the recent buzz, machine learning operations, or MLOps for short, is not really a new idea or a new field. The idea of focusing more on how to optimize machine learning in production was first introduced in a 2015 paper, Hidden Technical Debt in Machine Learning Systems. Even though this paper vividly described a number of challenges that need to be overcome when deploying machine learning models in production, newcomers to the field of machine learning rarely need to think about these barriers that advanced users of machine learning face. We’ve already taken a more detailed look into the field of MLOps in our Introduction to MLOps article, so be sure to check that out first. In this article, we will discuss why new data scientists rarely dive deep into this field.
-
+<html>
  
-
-Why You Should Learn MLOps
-A lot of people who are interested in data science try to take the quick route. Becoming a data scientist is not easy, and even with proper guidance, it requires a lot of effort and a lot of knowledge in a number of different fields. This combination of high levels of interest in the field of machine learning along with newcomers who have little of the prerequisite knowledge needed to understand machine learning has become the main reason why most machine learning engineers never get to become MLOps specialists. Starting from scratch means focusing time and effort learning the fundamentals, and then gaining as much experience as possible. This leaves little time to focus on the two other important parts of MLOps: DevOps and data engineering.
-
  
-
-What Questions Can Machine Learning Help You Answer?
- 
-
-To facilitate MLOps as much as possible and simplify the problems getting into it, an abundance of different tools have become relatively easily accessible. Some of these tools are easier to use than others but offer little in terms of flexibility and adjustability. There are also tools that are very powerful, but are hard to use. MLflow hits the sweet spot somewhere in the middle of that spectrum.
-
- 
-
-What Are the Most Popular AI and ML Tools?
- 
-
-As an open source platform, it is easy to come by and relatively easy to use while still being very powerful and flexible as an MLOps tool. Since it is not a completely new tool, most of the initial problems that come along with new tools have been fixed. This combination of reliability and ease of usage, along with the fact that it is also a powerful tool, means that MLflow is one of the top solutions for managing almost the whole lifecycle of a machine learning project. Let's dive deep into MLflow and explain why it is one of the most popular MLOps tools.
-
- 
-
-What is MLflow
-MLflow is a tool for managing the lifecycle of machine learning models. It was created by a proven and accomplished team. Its creators are also behind both the popular cloud platform Databricks and the even more popular unified analytics engine Apache Spark. This should instill confidence into anyone looking to use MLflow for their MLOps needs. MLflow was first released with three main components, with a fourth being added relatively recently. Those four main components are:
-
-MLflow Tracking
-MLflow Projects
-MLflow Models
-Model Registry
-
-Each of the components aims to cover an important aspect of machine learning development. A plethora of problems appear at each step, but they can generally be boiled down to:
-
-Number of tools needed to cover every aspect of the ML lifecycle
-Ease of integration
-Reproducibility 
-Reliability
-Scalability
-Problems with governance
-Problems with team member cooperation
-MLflow tries to solve all of these. Prizing itself on being both open source and open interface, MLflow indeed manages to deal with many (if not all) problems that present themselves during an ML model lifecycle. Even if a problem that it can't solve arises, a more specialized solution for that problem can be implemented because MLflow is so easy to integrate with a large number of different tools. Being able to solve most problems while also being easy to integrate with tools that can solve remaining problems seems to be a winning combination, and why MLflow is used by many MLOps teams. 
-
- 
-
-What Are Eight Critical Steps in the AI Project Life Cycle?
- 
-
-What Are the Components of MLflow
-Let's analyze and explain in detail the four main components of MLflow and how they are connected.
-
- 
-
-MLflow Tracking
-MLflow Tracking simplifies the process of tracking. Aside from creating logs for code versions, parameters and metrics, it can also be used as a means of creating output files. It is characterized by how easy it is to use. Following the concept of so-called runs, the MLflow Tracking component can be called to log and query using REST or Python.  It is especially practical for individuals who have experience creating machine learning models but don't have any experience properly managing them. The UI of MLflow Tracking is very straightforward. The inclusion of such a UI is actually the main driving force behind easily tracking a lot of different aspects connected to machine learning models. However, a good UI would mean nothing if the code for this component of MLflow was hard to implement. 
-
- 
-
-Machine Learning Styles: Most Common Types of Machine Learning and When to Use Them
- 
-
-Fortunately, adding MLflow Tracking to your existing code is very easy. A few lines of code allow us to build a whole tracking framework that will keep logs of everything that is important to us for managing machine learning models. To finish off, we must mention one additional thing: visualizations. Visualizing metrics is achieved easily with the UI. That in turn allows us to compare different runs and choose the best one with relative ease.
-
-This component of MLflow offers great and flexible solutions for teams of all sizes. Even a single user can find many benefits to tracking machine learning models using this component. This scalability means that MLflow is very easy to use.
-
-Description of MLflow tracking
-
- 
-
-MLflow Projects
-This component is based on the concept of projects. This is not something new. The idea of packaging code so that it can be used by others in a reproducible manner is something programmers have been using for a long time now. Similar to how packaging code usually works, MLflow Projects enables the creation of packages of reusable data science code. Those projects take the form of simple directories or even Git repositories. 
-
-Each project is defined by a YAML file. This file defines what is needed to run the code and how to run the code. Another thing that should be mentioned is that MLflow Projects allows us to create workflows by chaining together multiple projects. 
-
-Combining the API for MLflow Projects with  MLflow Tracking allows the user to create some form of a pipeline. Workflows are created by connecting separate projects together into one big multistep workflow. 
-
-Projects are very useful in terms of packaging code, but there are better solutions to building pipelines than chaining projects to each other. Usually, companies work with different technology stacks, so what you will choose depends on what stack you are using For example, companies that use AWS will probably combine MLflow with SageMaker in their solutions. 
-
- 
-
-How to Build CI/CD Pipelines Using AWS SageMaker
-
-If you are looking for the simplest solution, Databricks provides a version of MLflow that is fully managed and hosted. That is to be expected considering that Databricks created MLflow.
-Description of MLflow projects 
-
- 
-
-MLflow Models
-Models in MLflow are packaged inside the MLflow Model format. The innovation that makes dealing with models easier is called flavors.  These flavors remove the need for standard types of tool integration. Instead of integrating each tool with each library, flavors serve as conventions that allow deployment tools to understand how ML models work. These flavors cover both standard functionalities and custom ones. For example, there is a Python function flavor that makes running a model as easy as running a simple python function. On the other hand, there are also custom flavors connected with certain libraries, such as Scikit-learn, SageMaker. Every model is defined by an MLflow model YAML format file which holds all the necessary flavors that are needed for that specific model. However, this YAML file is not enough to describe the model properly. To describe the model in more detail, we add additional metadata in the form of:
-
-Model signature - stores a signature that describes a model's inputs and outputs in the JSON format
-Model input example - holds an example valid input
-This component may be the most important part of MLflow. It allows us to package models in an easy way and makes using different deployment tools fast and simple because flavors remove the need for integrating each tool with each library.
-Description of MLflow models 
-
- 
-
-Model Registry
-This component is the newest addition to MLflow. Before it was released, MLflow was missing one crucial thing: a governance system. That problem was solved by releasing Model Registry. Although some improvements can still be made, it covers the essential parts that are needed, such as:
-
-Model lineage
-Model versioning
-Stage transitions 
-Annotations
-By looking at what Model Registry covers, one can conclude that it basically serves as a centralized model store. As a component, it also includes a set of APIs and a UI. Those are the two ways one can interact with Model Registry.
-
-With the addition of the Model Registry component, MLflow has become the closest thing to an open-source end-to-end solution for doing MLOps. Although there are some improvements that still need to be made, MLflow’s shortcomings can easily be dealt with by using a few complementary tools, most of which are already offered on the Databricks platform.
-Model Registry in MLflow
-
-
- 
-
-How to Use MLflow for MLOps: An Example
-To demonstrate how MLflow can be used for MLOps, we are going to work with the "Telecom Churn" dataset. This is a publicly available dataset that can be downloaded from Kaggle. We won't focus too much on preparing our data since this dataset is relatively clean, but we will go through the process of initial analysis and cleaning before we start using MLflow. We will be writing the code inside a Jupyter notebook to make this demonstration as easy as possible to follow.
-
- 
-
-How to Write and Run Code in Jupyter Notebook
- 
-
-Preparing Data
-After downloading this dataset, the first thing we need to do is make sure that we have all the necessary libraries that we are going to use for the purposes of this demonstration. We won’t use too many different libraries. The ones we are going to use are: 
-
-Pandas 
-Scikit-learn
-XGBoost
-MLflow
-All of these are easy to install using pip. After making sure the necessary libraries are available,  we can start coding. To start off, we need to import all the libraries we are going to use in this notebook. We always do this in the beginning to make sure our code stays as clean as possible.
-
-
-1. # Import necessary libraries
-2.
-3. import pandas as pd
-4.
-5. from sklearn.model_selection import train_test_split
-6. from sklearn.preprocessing import MinMaxScaler
-7. from sklearn.metrics import roc_auc_score
-8. from sklearn.metrics import roc_curve,auc
-9. from sklearn.metrics import accuracy_score, classification_report
-10. from sklearn.linear_model import LogisticRegression
-11. import xgboost as xgb
-12. from xgboost.sklearn import XGBClassifier
-13.
-14. import mlflow
-15. from mlflow import pyfunc
-16. import mflow.xgboost
-
-Once we have imported everything we need, we can go ahead and:
-
-load in our dataset using the pandas library
-create a dataframe
-1. # Load in data
-2.
-3. churn_data = pd.read_csv("telecom_churn.csv")  
- 
-
-Python Data Processing: What is Pandas?
-As we mentioned earlier, before we implement MLflow, we need to do some initial data analysis and initial data cleaning. First, we are going to take a look at a snapshot of the dataframe using the head method from pandas.
-
-
-1. # Display snapshot of the dataframe
-2.
-3. churn_data.head()
-By running the code above, we will get:
-MLflow dataframe
-
- 
-
-Python Data Processing: What is a Pandas DataFrame and How Do You Create One?
-It seems we have a mix of numerical and categorical data in our dataset. We need to take this into account going forward because we are using Scikit-learn models, which only take numerical values as inputs.
-
-We can also see that the column names are problematic. We need to get rid of the white spaces between words and we need to make the column names lowercase.  Let's do that now.
-
-
-1. # Remove white spaces and lowercase names
-2.
-3. churndata.rename(columns=lambda x: x.replace(' ', '').lower(), inplace=True)
-Continuing with our initial analysis and cleaning, we are going to check whether there are duplicates present in our data. Duplicates can be very problematic, so we need to deal with them as soon as possible. 
-
-
-1. # Select duplicate rows
-2.
-3. duplicate_rows_data = churn_data[churn_data.duplicated()]
-4. print(f"Duplicate rows: {duplicate_rows_data}")  
-The resulting output we get from the code above is:
-
-We don't seem to have any duplicates inside our dataframe. This assures us that the results we get using other pandas methods will be reliable. Our next step will be to take a look at our dataset's basic information using the pandas info method. Looking at the info of a dataset is crucial for understanding how we will approach dealing with that dataset. Also, it dictates which preprocessing steps we need to do before we start building and training models.
-
-
-1. # Get dataset information
-2.
-3. churn_data.info()
- 
-
-The information we get by using that method looks like this:
-
-
-data cleaning in MLflow 
-
-Aside from giving us some insight into the different data types we need to work with, this method will also tell us if we are missing some data. At first glance, it seems like there are no missing values in any of our columns, but to make sure, let's create a function that will check for missing values and then print out a dataframe that represents the number of missing values and the percentage of missing values for each column in our dataset.
-
-
-1. # Define a function that will check for missing data
-2.
-3. def analyze_missing_data(data):
-4.     total_missing = data.isnull().sum().sort_values(ascending=False)
-5.     percent_missing = data.isnull().sum() / data.isnull().count() * 100
-6.     percent_missing.sort_values(ascending=False, inplace=True)
-7.     missing_data_analysis = pd.concat(
-8.         [total_missing, percent_missing],
-9.         axis=1,
-10.         keys=['Total', 'Percentage']
-11.     )
-12.
-13.     return missing_data_analysis
-14.
-15. # And let's use that function to analyze missing data in our dataframe
-16.
-17. analyze_missing_data(churn_data)
-The dataframe we created using the analyze_missing_data function looks like this:
-analyze missing data in MLflow 
-
-This reaffirms the results we got using the info method. We could continue with analyzing the plausibility of our data and performing some EDA, but since that is not the focus of this article, we are going to skip that. We will need to create a function that will do the necessary preprocessing. We are going to incorporate some dataset preparation and data scaling into this function. This is something we want to avoid doing manually. It is very impractical to clean and scale our data each time we want to use a new batch of data to train our models. Let’s follow these steps:
-
-Create two lists: one of the numerical columns, the other of the categorical ones.
-Define the scaler we are going to use. 
-Shuffle our data and then separate the dependent variable from the independent ones.
-Encode our dependent variable and transform it into a binary one instead of a boolean. 
-Create datasets.
-The code for the first step is:
-
-
-1. # Create lists of numeric and categorical columns
-2.
-3. churn_numeric_columns = list(churn_data.selectdtypes(exclude=["bool", 
-4. "object_"]))
-5. churn_categorical_columns = list(churn_data.selectdtypes(exclude=["bool", 
-6. "number"])
-This will create the two lists that we are going to need later when we create our preprocessing function. We can go ahead and define the scaler we are going to use. 
-
-
-1. # Define scaler
-2.
-3. scaler = MinMaxScaler()  
-The MinMax scaler is an excellent choice to scale data. We want to make sure that the variables with bigger values don't snuff out the importance of the variables that have smaller values.
-
-The code for our third preliminary step is:
-
-
-1. # Shuffle data
-2.
-3. churn_data = churn_data.sample(frac=1).reset_index(drop=True)
-4.
-5. # Separate dependent varaible from independent varaibles
-6.
-7. X = churn_data.drop(columns=["churn"], axis=1)
-8. y = churn_data["churn"]
-Our dependent variable is now separate from our independent variables. However, we still need to deal with the fact that the data type of "y" is "bool". The easiest way to deal with this is to just encode "y" as a binary variable. "True" will be equal to 1, and "False" will be equal to 0. 
-
-The code that changes the type of our dependent variable is:
-
-
-1. # Convert boolean value into a binary one
-2.
-3. y = y.astype(int)
-To finish off our preliminary tasks, we will use the train_test_split function from Scikit-learn to separate our data into training data and testing data.
-
-
-1. # Create datasets
-2.
-3. X_train, X_test, y_train, y_test = train_test_split(X,
-4.                                                     y,
-5.                                                     train_size=0.8,
-6.                                                     test_size=0.2,
-7.                                                     random_state=1)
-The prerequisites for creating our preprocessing function have been met. Let's create two versions of our preprocessing function. They are mostly the same. The only difference lies in how the data is scaled.  
-
-First, we will create the function that preprocesses our training data:
-
-
-1. # Training data preprocessing function
-2.
-3. def train_preprocessing(df,
-4.                 numeric_columns,
-5.                 categorical_columns,
-6.                 scaler):
-7.
-8.     new_churn = df[set(numeric_columns + categorical_columns)].copy()
-9.     new_churn[numeric_columns] = scaler.fit_transform(new_churn[numeric_columns])
-10.     churn_dummies = pd.get_dummies(new_churn[categorical_columns], drop_first=True)
-11.     new_churn = pd.concat([new_churn, churn_dummies], axis=1)
-12.     new_churn.drop(categorical_columns, axis=1, inplace = True)
-13.
-14.     return new_churn  
-Now we can create the function that preprocesses the data we will use for testing our models.
-
-
-1. # Testing data prepreocessing function
-2.
-3. def test_preprocessing(df,
-4.                 numeric_columns,
-5.                 categorical_columns,
-6.                 scaler):
-7.
-8.     new_churn = df[set(numeric_columns + categorical_columns)].copy()
-9.     new_churn[numeric_columns] = scaler.transform(new_churn[numeric_columns])
-10.     churn_dummies = pd.get_dummies(new_churn[categorical_columns], drop_first=True)
-11.     new_churn = pd.concat([new_churn, churn_dummies], axis=1)
-12.     new_churn.drop(categorical_columns, axis=1, inplace = True)
-13.
-14.     return new_churn  
-Now that we have prepared the two functions, let's preprocess our data.
-
-
-1. # Preprocess training data
-2.
-3. X_train = train_preprocessing(X_train,
-4.                               churn_numeric_columns,
-5.                               churn_categorical_columns,
-6.                               scaler)
-7.
-8. # Preprocess testing data
-9.
-10. X_test = test_preprocessing(X_test,
-11.                             churn_numeric_columns,
-12.                             churn_categorical_columns,
-13.                             scaler)  
-With this, we have prepared everything we need. Now we can demonstrate the four parts of MLflow we explained earlier in this article.
-
- 
-Set up and Use MLflow 
-After preparing everything we need for preprocessing our data, we can demonstrate how MLflow Tracking works. To do that, we first need to run "mlflow ui" in our terminal.
-
-
-command written in terminal 
-
-As we mentioned earlier when we explained MLflow, we need to set up an experiment. To do that, we need to tell Python where to look, and define the experiment itself.
-
-1. # Connect to MLflow
-2.
-3. mlflow.set_tracking_uri("http://localhost:5000")
-4. mlflow.set_experiment("TelecomChurnExperiment")   
-Since only the default experiment exists for now, the result from running this code will be:
-info message in MLflow 
-
-Following the link given in the tracking, if we open the UI it will look something like this:
-
-MLflow user interface
-
-As you can see above, there are two experiments in the UI currently. One is the default experiment, and the other is the new experiment we just created. For now, both are empty since we haven't actually created a run. To create a run, we are going to create a model using the default model interface for Python models: the "python_function" flavor. This is a good demonstration of MLflow Models, since it shows we can use flavors to create models.  This format will allow us to easily package models. It is self-contained and holds everything needed to load and use a model. It also allows us to easily integrate any model from any tool. For the purposes of this demonstration we are going to use two models: the Logistic Regression model and the XGBoost model. This way we will have two models to compare in our UI. Let's create the Logistic Regression model first.
-
-To start off, we need to create a class that will define how our model looks. This will allow us to call on it later when we start creating runs. For the purposes of this example, we are going to create a very simple class. We just need to be able to track the results of our models. The code for creating such a class looks like this:
-
-
-1. # Define model
-2.
-3. class Churn_Model(mlflow.pyfunc.PythonModel):
-4.
-5.     def init(self, model):
-6.         self.model = model
-7.
-8.     def predict(self, context, model_input):
-9.         return self.model.predict(model_input)
-We can use this class for both the Logistic Regression model and the XGBoost model. We could define the environment so that we can later deploy the model on whichever platform we want. Before going ahead with our first run, let's create a simple YAML file that defines the environment.
-
-
-1. # define specific python and package versions for environment
-2. mlflow_env = {
-3.  'name': 'mlflow-env',
-4.  'channels': ['defaults'],
-5.  'dependencies': ['python=3.6.2', {'pip': ['mlflow==1.6.0','scikit-learn']}]
-6. }  
-Getting back on track, let's create our first run, which will use a Logistic Regression model.
-
-The code above specifies the run with the Logistic Regression model. When coding, we first need to specify the parameters we want to use and the model we want to use. Afterwards, since we want to check accuracy and the AUC score, we need to define how we calculate them. We can then define what we want to track and log. Then, we will save the run ID and experiment ID so we have everything we need later on if we choose to deploy our model. 
-
-
-1. # Define and do run
-2.
-3. with mlflow.start_run(run_name="Churn Prediction model run 1") as run:
-4.
-5.     # Define model parameters
-6.
-7.     penalty = "l2"
-8.
-9.     # Define model
-10.
-11.     log_reg_model = LogisticRegression(solver='lbfgs', penalty=penalty)
-12.     log_reg_model.fit(X_train, y_train)
-13.
-14.     y_pred_model = log_reg_model.predict(X_test)
-15.     predictions_test= log_reg_model.predict_proba(X_test)[:,1]
-16.
-17.     accuracy = accuracy_score(y_pred_model, y_test)
-18.     auc_score = roc_auc_score(y_test, predictions_test)
-19.
-20.     # Log parameters
-21.
-22.     mlflow.log_param("penalty", penalty)
-23.
-24.     # Log metrics
-25.
-26.     mlflow.log_metric("accuracy", accuracy)
-27.     mlflow.log_metric("auc_score", auc_score)
-28.
-29.
-30.     # log model with all objects referenced
-31.
-32.     pyfunc.log_model(
-33.         artifact_path = "churn_pyfunc",
-34.         python_model = Churn_Model(model=log_reg_model),
-35.         conda_env = mlflow_env)
-36.
-37.     # Save run_id and experiment_id
-38.
-39.     run_id = run.info.run_uuid
-40.     experiment_id = run.info.experiment_id
-41.
-42.     # End run
-43.
-44.     mlflow.end_run()  
-After running the code, we can see our run by refreshing the page of the MLflow UI. We will switch the view mode to the compact one because we will have just two models in this demonstration:
-
-
-new experiment in MLflow 
-
-Our results are relatively good. Let's create the XGBoost run to demonstrate how we can compare them:
-
-
-1. # Define and do run
-2.
-3. with mlflow.start_run(run_name="Churn Prediction model run 2") as run:
-4.
-5.     #Define model parameters
-6.
-7.     n_estimators = 1500
-8.     learning_rate = 0.1
-9.     max_depth = 4
-10.
-11.     # Define model
-12.
-13.     xgb_model = XGBClassifier(learning_rate=learning_rate,
-14.                               n_estimators=n_estimators,
-15.                               max_depth=max_depth)
-16.
-17.     xgb_model.fit(X_train, y_train)
-18.
-19.     y_pred_model = xgb_model.predict(X_test)
-20.     predictions_test= xgb_model.predict_proba(X_test)[:,1]
-21.
-22.     accuracy = accuracy_score(y_pred_model, y_test)
-23.     auc_score = roc_auc_score(y_test, predictions_test)
-24.
-25.     # Log parameters
-26.
-27.     mlflow.log_param("n_estimators", n_estimators)
-28.     mlflow.log_param("learning_rate", learning_rate)
-29.     mlflow.log_param("max_depth", max_depth)
-30.
-31.     # Log metrics
-32.
-33.     mlflow.log_metric("accuracy", accuracy)
-34.     mlflow.log_metric("auc_score", auc_score)
-35.
-36.     # log model with all objects referenced
-37.
-38.     pyfunc.log_model(
-39.         artifact_path = "churn_pyfunc",
-40.         python_model = Churn_Model(model=xgb_model),
-41.         conda_env = mlflow_env)
-42.
-43.     # Save run_id and experiment_id
-44.
-45.     run_id = run.info.run_uuid
-46.     experiment_id = run.info.experiment_id
-47.
-48.     # End run
-49.
-50.     mlflow.end_run()  
-Let's take a look at our UI now:
-
-
-XGBoost results 
-
-We see that our XGBoost model performs much better. The UI can also compare runs:
-
-Comparing 2 runs 
-
-This option to compare runs is more useful when we have multiple runs with the same model but different hyperparameters. A potentially more useful option is looking at the details of the run with the XGBoost model. We can already see most of these details since we didn't use special tags and similar things, but we can also see the artifacts of that particular run.
-
-
-artifacts of a MLmodel 
-
-Here, we can easily see our model in the ML model format. We can also see the conda environment as a YAML file. When we have a run we are satisfied with, we can transition that run into a model in the MLflow Model Registry. We do this by clicking on the upper right box in the artifacts section:
-artifacts section
-
- 
-
-It will then ask us if we want to create a new model. Since we don't have a model, we will create a new one.
-
-
-create a new model
- 
-
-There is one potential problem that can arise. The models can't be saved anywhere we want. Basically, if we try to just save a run to the folder with our Jupyter notebooks, this error pops up:
-
-
-MLflow error 
-
-This means that we need to have a valid scheme to use the MLflow Model Registry. The reason for that is very simple, and can be seen in the image below:
-
-
-a Jupyter notebook folder
-
-This is what a Jupyter notebook folder looks like after only 4 runs. Even if we tagged models perfectly and made sure that the names say the reason for a particular run, our folder would quickly become unusable. Because of that, some type of database system is necessary to house all of our runs.
-
-This wraps up our demonstration of MLflow. The only aspect we didn't touch on is deployment. However, we will demonstrate that in the next article in this series, which explains the way we leverage AWS for MLOps, including model deployment via AWS. This is also the optimal way to deploy MLflow models.
-
-
-Conclusion
-In this article, we explained the four integral modules of MLflow. Using them, we can create, for the most part, a full machine learning workflow. Perhaps the best thing about MLflow is that it integrates so easily with other tools that it can cover its deficiencies very easily, which makes MLflow one of the most reliable tools for MLOps. Aside from its flexibility, it is relatively easy to use. Although it is not perfect, and needs some complementary tools (such as tools that will facilitate deployment), MLflow stands as one of the most complete options to choose from when deciding which platform to use for MLOps. Therefore, we recommend MLflow to every team that looks forward to creating their own MLOps workflow.
+<body>
+<section class="pt-12">
+  <div class="blog-container px-7 lg:px-7 mx-auto">
+    <h1 class="text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 font-secondary pr-0 md:pr-40">
+      How to Use MLflow for MLOps
+    </h1>
+      <div class="mt-6 text-dark-gray max-w-3xl">
+        Despite the recent buzz, machine learning operations, or MLOps for short, is not really a new idea or a new field. In this article, we will discuss why new data scientists rarely dive deep into this field.
+      </div>
+    <div class="flex mb-2">
+      <div class="w-10 h-10 rounded-full flex items-center justify-center mb-2 mt-2 mr-2 social-icon">
+        <a href="https://www.facebook.com/Edlitera" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+      </div>
+      <div class="w-10 h-10 rounded-full flex items-center justify-center mb-2 mt-2 social-icon">
+        <a href="https://twitter.com/Edlitera" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+      </div>
+    </div>
+
+      <div class="blog-featured-img pr-10 mb-4">
+        <img alt="blog image" class="w-full" src="https://res.cloudinary.com/edlitera/image/upload/c_scale,f_auto,h_1040,q_auto/h8pu2ns8ajjvbuwl2ichh9njgggv" />
+      </div>
+    <div class="blog-content max-w-3xl m-auto py-5 md:py-12 text-lg">
+      <div class="mce-toc">
+<h2>Table of Contents</h2>
+<ul>
+<li><a href="#mcetoc_1ftqv6012m">Why You Should Learn MLOps</a></li>
+<li><a href="#mcetoc_1ftqv6012o">What is MLflow</a></li>
+<li><a href="#mcetoc_1ftqv6012q">What Are the Components of MLflow</a>
+<ul>
+<li><a href="#mcetoc_1ftqv6012s">MLflow Tracking</a></li>
+<li><a href="#mcetoc_1ftqv6012u">MLflow Projects</a></li>
+<li><a href="#mcetoc_1ftqv601210">MLflow Models</a></li>
+<li><a href="#mcetoc_1ftqv601212">Model Registry</a></li>
+</ul>
+</li>
+<li><a href="#mcetoc_1ftqv601214">How to Use MLflow for MLOps: An Example</a>
+<ul>
+<li><a href="#mcetoc_1ftqv601216">Preparing Data</a></li>
+<li><a href="#mcetoc_1ftqv601218">Set up and Use MLflow&nbsp;</a></li>
+</ul>
+</li>
+<li><a href="#mcetoc_1ftqv601219">Conclusion</a></li>
+</ul>
+</div>
+<p>Despite the recent buzz, machine learning operations, or MLOps for short, is not really a new idea or a new field. The idea of focusing more on how to optimize machine learning in production was first introduced in a 2015 paper, <em>Hidden Technical Debt in Machine Learning Systems</em>. Even though this paper vividly described a number of challenges that need to be overcome when deploying machine learning models in production, newcomers to the field of machine learning rarely need to think about these barriers that advanced users of machine learning face. We&rsquo;ve already taken a more detailed look into the field of MLOps in our <a href="../../../en/blog/posts/introduction-to-mlops" target="_blank" rel="noopener">Introduction to MLOps</a> article, so be sure to check that out first. In this article, we will discuss why new data scientists rarely dive deep into this field.</p>
+<p id="mcetoc_1ftqv6012l">&nbsp;</p>
+<h2 id="mcetoc_1ftqv6012m">Why You Should Learn MLOps</h2>
+<p>A lot of people who are interested in data science try to take the quick route. Becoming a data scientist is not easy, and even with proper guidance, it requires a lot of effort and a lot of knowledge in a number of different fields. This combination of high levels of interest in the field of machine learning along with newcomers who have little of the prerequisite knowledge needed to understand machine learning has become the main reason why most machine learning engineers never get to become MLOps specialists. Starting from scratch means focusing time and effort learning the fundamentals, and then gaining as much experience as possible. This leaves little time to focus on the two other important parts of MLOps: DevOps and data engineering.</p>
+<p>&nbsp;</p>
+<ul>
+<li class="text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 font-secondary pr-0 md:pr-40"><a href="../../../en/blog/posts/what-questions-can-machine-learning-help-you-answer" target="_blank" rel="noopener">What Questions Can Machine Learning Help You Answer?</a></li>
+</ul>
+<p>&nbsp;</p>
+<p>To facilitate MLOps as much as possible and simplify the problems getting into it, an abundance of different tools have become relatively easily accessible. Some of these tools are easier to use than others but offer little in terms of flexibility and adjustability. There are also tools that are very powerful, but are hard to use. MLflow hits the sweet spot somewhere in the middle of that spectrum.</p>
+<p>&nbsp;</p>
+<ul>
+<li><a href="../../../en/blog/posts/most-popular-ai-ml-tools" target="_blank" rel="noopener">What Are the Most Popular AI and ML Tools?</a></li>
+</ul>
+<p>&nbsp;</p>
+<p>As an open source platform, it is easy to come by and relatively easy to use while still being very powerful and flexible as an MLOps tool. Since it is not a completely new tool, most of the initial problems that come along with new tools have been fixed. This combination of reliability and ease of usage, along with the fact that it is also a powerful tool, means that MLflow is one of the top solutions for managing almost the whole lifecycle of a machine learning project. Let&#39;s dive deep into MLflow and explain why it is one of the most popular MLOps tools.</p>
+<p id="mcetoc_1ftqv6012n">&nbsp;</p>
+<h2 id="mcetoc_1ftqv6012o">What is MLflow</h2>
+<p>MLflow is a tool for managing the lifecycle of machine learning models. It was created by a proven and accomplished team. Its creators are also behind both the popular cloud platform Databricks and the even more popular unified analytics engine Apache Spark. This should instill confidence into anyone looking to use MLflow for their MLOps needs. MLflow was first released with three main components, with a fourth being added relatively recently. Those four main components are:</p>
+<ul>
+<li>MLflow Tracking</li>
+<li>MLflow Projects</li>
+<li>MLflow Models</li>
+<li>Model Registry</li>
+</ul>
+<p><br />Each of the components aims to cover an important aspect of machine learning development. A plethora of problems appear at each step, but they can generally be boiled down to:</p>
+<ul>
+<li>Number of tools needed to cover every aspect of the ML lifecycle</li>
+<li>Ease of integration</li>
+<li>Reproducibility&nbsp;</li>
+<li>Reliability</li>
+<li>Scalability</li>
+<li>Problems with governance</li>
+<li>Problems with team member cooperation</li>
+</ul>
+<p>MLflow tries to solve all of these. Prizing itself on being both open source and open interface, MLflow indeed manages to deal with many (if not all) problems that present themselves during an ML model lifecycle. Even if a problem that it can&#39;t solve arises, a more specialized solution for that problem can be implemented because MLflow is so easy to integrate with a large number of different tools. Being able to solve most problems while also being easy to integrate with tools that can solve remaining problems seems to be a winning combination, and why MLflow is used by many MLOps teams.&nbsp;</p>
+<p>&nbsp;</p>
+<ul>
+<li class="text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 font-secondary pr-0 md:pr-40"><a href="../../../en/blog/posts/ai-project-life-cycle" target="_blank" rel="noopener">What Are Eight Critical Steps in the AI Project Life Cycle?</a></li>
+</ul>
+<p>&nbsp;</p>
+<h2 id="mcetoc_1ftqv6012q">What Are the Components of MLflow</h2>
+<p>Let&#39;s analyze and explain in detail the four main components of MLflow and how they are connected.</p>
+<p id="mcetoc_1ftqv6012r">&nbsp;</p>
+<h3 id="mcetoc_1ftqv6012s">MLflow Tracking</h3>
+<p>MLflow Tracking simplifies the process of tracking. Aside from creating logs for code versions, parameters and metrics, it can also be used as a means of creating output files. It is characterized by how easy it is to use. Following the concept of so-called runs, the MLflow Tracking component can be called to log and query using REST or Python. &nbsp;It is especially practical for individuals who have experience creating machine learning models but don&#39;t have any experience properly managing them. The UI of MLflow Tracking is very straightforward. The inclusion of such a UI is actually the main driving force behind easily tracking a lot of different aspects connected to machine learning models. However, a good UI would mean nothing if the code for this component of MLflow was hard to implement.&nbsp;</p>
+<p>&nbsp;</p>
+<ul>
+<li class="text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 font-secondary pr-0 md:pr-40"><a href="../../../en/blog/posts/machine-learning-types" target="_blank" rel="noopener">Machine Learning Styles: Most Common Types of Machine Learning and When to Use Them</a></li>
+</ul>
+<p>&nbsp;</p>
+<p>Fortunately, adding MLflow Tracking to your existing code is very easy. A <strong>few lines of code</strong> allow us to build a whole tracking framework that will keep logs of everything that is important to us for managing machine learning models. To finish off, we must mention one additional thing: visualizations. Visualizing metrics is achieved easily with the UI. That in turn allows us to compare different runs and choose the best one with relative ease.</p>
+<p>This component of MLflow offers great and flexible solutions for teams of all sizes. Even a single user can find many benefits to tracking machine learning models using this component. This scalability means that MLflow is very easy to use.</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://res.cloudinary.com/edlitera/image/upload/c_fill,f_auto/v1643397671/blog/wljfo1dsxb3sidodys3u" alt="Description of MLflow tracking" width="410" height="311" /></p>
+<p id="mcetoc_1ftqv6012t">&nbsp;</p>
+<h3 id="mcetoc_1ftqv6012u">MLflow Projects</h3>
+<p>This component is based on the concept of projects. This is not something new. The idea of packaging code so that it can be used by others in a reproducible manner is something programmers have been using for a long time now. Similar to how packaging code usually works, MLflow Projects enables the creation of packages of reusable data science code. Those projects take the form of simple directories or even Git repositories.&nbsp;</p>
+<p>Each project is defined by a YAML file. This file defines what is needed to run the code and how to run the code. Another thing that should be mentioned is that MLflow Projects allows us to create workflows by chaining together multiple projects.&nbsp;</p>
+<p>Combining the API for MLflow Projects with &nbsp;MLflow Tracking allows the user to create some form of a pipeline. Workflows are created by connecting separate projects together into one big multistep workflow.&nbsp;</p>
+<p>Projects are very useful in terms of packaging code, but there are better solutions to building pipelines than chaining projects to each other. Usually, companies work with different technology stacks, so what you will choose depends on what stack you are using For example, companies that use AWS will probably combine MLflow with SageMaker in their solutions.&nbsp;</p>
+<p>&nbsp;</p>
+<ul>
+<li class="text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 font-secondary pr-0 md:pr-40"><a href="../../../en/blog/posts/aws-sagemaker-ci-cd-pipelines" target="_blank" rel="noopener">How to Build CI/CD Pipelines Using AWS SageMaker</a></li>
+</ul>
+<p><br />If you are looking for the simplest solution, Databricks provides a version of MLflow that is fully managed and hosted. That is to be expected considering that Databricks created MLflow.<br /><img style="display: block; margin-left: auto; margin-right: auto;" src="https://res.cloudinary.com/edlitera/image/upload/c_fill,f_auto/v1643397902/blog/qjhymwpbcukz5f8ucdp2" alt="Description of MLflow projects" width="333" height="252" />&nbsp;</p>
+<p id="mcetoc_1ftqv6012v">&nbsp;</p>
+<h3 id="mcetoc_1ftqv601210">MLflow Models</h3>
+<p>Models in MLflow are packaged inside the MLflow Model format. The innovation that makes dealing with models easier is called <strong>flavors</strong>. &nbsp;These flavors remove the need for standard types of tool integration. Instead of integrating each tool with each library, flavors serve as conventions that allow deployment tools to understand how ML models work. These flavors cover both standard functionalities and custom ones. For example, there is a Python function flavor that makes running a model as easy as running a simple python function. On the other hand, there are also custom flavors connected with certain libraries, such as Scikit-learn, SageMaker. Every model is defined by an MLflow model YAML format file which holds all the necessary flavors that are needed for that specific model. However, this YAML file is not enough to describe the model properly. To describe the model in more detail, we add additional metadata in the form of:</p>
+<ul>
+<li>Model signature - stores a signature that describes a model&#39;s inputs and outputs in the JSON format</li>
+<li>Model input example - holds an example valid input</li>
+</ul>
+<p>This component may be the most important part of MLflow. It allows us to package models in an easy way and makes using different deployment tools fast and simple because flavors remove the need for integrating each tool with each library.<br /><img style="display: block; margin-left: auto; margin-right: auto;" src="https://res.cloudinary.com/edlitera/image/upload/c_fill,f_auto/v1643398586/blog/x1zti01mpee5bovcyyil" alt="Description of MLflow models" width="402" height="307" />&nbsp;</p>
+<p id="mcetoc_1ftqv601211">&nbsp;</p>
+<h3 id="mcetoc_1ftqv601212">Model Registry</h3>
+<p>This component is the newest addition to MLflow. Before it was released, MLflow was missing one crucial thing: a governance system. That problem was solved by releasing Model Registry. Although some improvements can still be made, it covers the essential parts that are needed, such as:</p>
+<ul>
+<li>Model lineage</li>
+<li>Model versioning</li>
+<li>Stage transitions&nbsp;</li>
+<li>Annotations</li>
+</ul>
+<p>By looking at what Model Registry covers, one can conclude that it basically serves as a centralized model store. As a component, it also includes a set of APIs and a UI. Those are the two ways one can interact with Model Registry.</p>
+<p>With the addition of the Model Registry component, MLflow has become the closest thing to an open-source end-to-end solution for doing MLOps. Although there are some improvements that still need to be made, MLflow&rsquo;s shortcomings can easily be dealt with by using a few complementary tools, most of which are already offered on the Databricks platform.<br /><img style="display: block; margin-left: auto; margin-right: auto;" src="https://res.cloudinary.com/edlitera/image/upload/c_fill,f_auto/v1643398632/blog/bslqysf0vbbihorqzron" alt="Model Registry in MLflow" width="409" height="309" /><br /><br /></p>
+<p id="mcetoc_1ftqv601213">&nbsp;</p>
+<h2 id="mcetoc_1ftqv601214">How to Use MLflow for MLOps: An Example</h2>
+<p>To demonstrate how MLflow can be used for MLOps, we are going to work with the &quot;Telecom Churn&quot; dataset. This is a publicly available dataset that can be downloaded from Kaggle. We won&#39;t focus too much on preparing our data since this dataset is relatively clean, but we will go through the process of initial analysis and cleaning before we start using MLflow. We will be writing the code inside a Jupyter notebook to make this demonstration as easy as possible to follow.</p>
+<p>&nbsp;</p>
+<ul>
+<li class="text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 font-secondary pr-0 md:pr-40"><a href="../../../en/blog/posts/guide-how-to-use-jupyter-notebooks" target="_blank" rel="noopener">How to Write and Run Code in Jupyter Notebook</a></li>
+</ul>
+<p>&nbsp;</p>
+<h3 id="mcetoc_1ftqv601216">Preparing Data</h3>
+<p>After downloading this dataset, the first thing we need to do is make sure that we have all the necessary libraries that we are going to use for the purposes of this demonstration. We won&rsquo;t use too many different libraries. The ones we are going to use are:&nbsp;</p>
+<ul>
+<li>Pandas&nbsp;</li>
+<li>Scikit-learn</li>
+<li>XGBoost</li>
+<li>MLflow</li>
+</ul>
+<p>All of these are easy to install using pip. After making sure the necessary libraries are available, &nbsp;we can start coding. To start off, we need to import all the libraries we are going to use in this notebook. We always do this in the beginning to make sure our code stays as clean as possible.<br /><br /></p>
+<pre class="language-python"><code>1. # Import necessary libraries<br>2.<br>3. import pandas as pd<br>4.<br>5. from sklearn.model_selection import train_test_split<br>6. from sklearn.preprocessing import MinMaxScaler<br>7. from sklearn.metrics import roc_auc_score<br>8. from sklearn.metrics import roc_curve,auc<br>9. from sklearn.metrics import accuracy_score, classification_report<br>10. from sklearn.linear_model import LogisticRegression<br>11. import xgboost as xgb<br>12. from xgboost.sklearn import XGBClassifier<br>13.<br>14. import mlflow<br>15. from mlflow import pyfunc<br>16. import mflow.xgboost</code></pre>
+<p><br />Once we have imported everything we need, we can go ahead and:</p>
+<ul>
+<li>load in our dataset using the pandas library</li>
+<li>create a dataframe</li>
+</ul>
+<pre class="language-python"><code>1. # Load in data<br>2.<br>3. churn_data = pd.read_csv(&quot;telecom_churn.csv&quot;)  </code></pre>
+<p>&nbsp;</p>
+<ul>
+<li class="text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 font-secondary pr-0 md:pr-40"><a href="../../../en/blog/posts/pandas-intro" target="_blank" rel="noopener">Python Data Processing: What is Pandas?</a></li>
+</ul>
+<p>As we mentioned earlier, before we implement MLflow, we need to do some initial data analysis and initial data cleaning. First, we are going to take a look at a snapshot of the dataframe using the head method from pandas.<br /><br /></p>
+<pre class="language-python"><code>1. # Display snapshot of the dataframe<br>2.<br>3. churn_data.head()</code></pre>
+<p>By running the code above, we will get:<br /><img style="display: block; margin-left: auto; margin-right: auto;" src="https://res.cloudinary.com/edlitera/image/upload/c_fill,f_auto/v1643398797/blog/tnrhbwkfd1981g3usesy" alt="MLflow dataframe" width="90%" height="" /></p>
+<p>&nbsp;</p>
+<ul>
+<li class="text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 font-secondary pr-0 md:pr-40"><a href="../../../en/blog/posts/pandas-dataframe" target="_blank" rel="noopener">Python Data Processing: What is a Pandas DataFrame and How Do You Create One?</a></li>
+</ul>
+<p>It seems we have a mix of numerical and categorical data in our dataset. We need to take this into account going forward because we are using Scikit-learn models, which only take numerical values as inputs.</p>
+<p>We can also see that the column names are problematic. We need to get rid of the white spaces between words and we need to make the column names lowercase. &nbsp;Let&#39;s do that now.<br /><br /></p>
+<pre class="language-python"><code>1. # Remove white spaces and lowercase names<br>2.<br>3. churn<em>data.rename(columns=lambda x: x.replace(&#39; &#39;, &#39;</em>&#39;).lower(), inplace=True)</code></pre>
+<p>Continuing with our initial analysis and cleaning, we are going to check whether there are duplicates present in our data. Duplicates can be very problematic, so we need to deal with them as soon as possible.&nbsp;<br /><br /></p>
+<pre class="language-python"><code>1. # Select duplicate rows<br>2.<br>3. duplicate_rows_data = churn_data[churn_data.duplicated()]<br>4. print(f&quot;Duplicate rows: {duplicate_rows_data}&quot;)  </code></pre>
+<p>The resulting output we get from the code above is:<img style="display: block; margin-left: auto; margin-right: auto;" src="https://res.cloudinary.com/edlitera/image/upload/c_fill,f_auto/v1643398921/blog/ttsxmta47c6gnsnoe4fl" alt="" width="1299" height="147" /></p>
+<p>We don&#39;t seem to have any duplicates inside our dataframe. This assures us that the results we get using other pandas methods will be reliable. Our next step will be to take a look at our dataset&#39;s basic information using the pandas info method. Looking at the info of a dataset is crucial for understanding how we will approach dealing with that dataset. Also, it dictates which preprocessing steps we need to do before we start building and training models.<br /><br /></p>
+<pre class="language-python"><code>1. # Get dataset information<br>2.<br>3. churn_data.info()</code></pre>
+<p>&nbsp;</p>
+<p>The information we get by using that method looks like this:</p>
+<p><br /><img style="display: block; margin-left: auto; margin-right: auto;" src="https://res.cloudinary.com/edlitera/image/upload/c_fill,f_auto/v1643398982/blog/ln2bonlndmsal0wyzuyq" alt="data cleaning in MLflow" width="409" height="454" />&nbsp;</p>
+<p>Aside from giving us some insight into the different data types we need to work with, this method will also tell us if we are missing some data. At first glance, it seems like there are no missing values in any of our columns, but to make sure, let&#39;s create a function that will check for missing values and then print out a dataframe that represents the number of missing values and the percentage of missing values for each column in our dataset.<br /><br /></p>
+<pre class="language-python"><code>1. # Define a function that will check for missing data<br>2.<br>3. def analyze_missing_data(data):<br>4.     total_missing = data.isnull().sum().sort_values(ascending=False)<br>5.     percent_missing = data.isnull().sum() / data.isnull().count() * 100<br>6.     percent_missing.sort_values(ascending=False, inplace=True)<br>7.     missing_data_analysis = pd.concat(<br>8.         [total_missing, percent_missing],<br>9.         axis=1,<br>10.         keys=[&#39;Total&#39;, &#39;Percentage&#39;]<br>11.     )<br>12.<br>13.     return missing_data_analysis<br>14.<br>15. # And let&#39;s use that function to analyze missing data in our dataframe<br>16.<br>17. analyze_missing_data(churn_data)</code></pre>
+<p>The dataframe we created using the analyze_missing_data function looks like this:<br /><img style="display: block; margin-left: auto; margin-right: auto;" src="https://res.cloudinary.com/edlitera/image/upload/c_fill,f_auto/v1643399037/blog/tx97wqiee0pym8gsuhoy" alt="analyze missing data in MLflow" width="308" height="601" />&nbsp;</p>
+<p>This reaffirms the results we got using the info method. We could continue with analyzing the plausibility of our data and performing some EDA, but since that is not the focus of this article, we are going to skip that. We will need to create a function that will do the necessary preprocessing. We are going to incorporate some dataset preparation and data scaling into this function. This is something we want to avoid doing manually. It is very impractical to clean and scale our data each time we want to use a new batch of data to train our models. Let&rsquo;s follow these steps:</p>
+<ol>
+<li>Create two lists: one of the numerical columns, the other of the categorical ones.</li>
+<li>Define the scaler we are going to use.&nbsp;</li>
+<li>Shuffle our data and then separate the dependent variable from the independent ones.</li>
+<li>Encode our dependent variable and transform it into a binary one instead of a boolean.&nbsp;</li>
+<li>Create datasets.</li>
+</ol>
+<p>The code for the first step is:<br /><br /></p>
+<pre class="language-python"><code>1. # Create lists of numeric and categorical columns<br>2.<br>3. churn_numeric_columns = list(churn_data.select<em>dtypes(exclude=[&quot;bool</em>&quot;, 
+4. &quot;object_&quot;]))<br>5. churn_categorical_columns = list(churn_data.select<em>dtypes(exclude=[&quot;bool</em>&quot;, 
+6. &quot;number&quot;])</code></pre>
+<p>This will create the two lists that we are going to need later when we create our preprocessing function. We can go ahead and define the scaler we are going to use.&nbsp;<br /><br /></p>
+<pre class="language-python"><code>1. # Define scaler<br>2.<br>3. scaler = MinMaxScaler()  </code></pre>
+<p>The MinMax scaler is an excellent choice to scale data. We want to make sure that the variables with bigger values don&#39;t snuff out the importance of the variables that have smaller values.</p>
+<p>The code for our third preliminary step is:<br /><br /></p>
+<pre class="language-python"><code>1. # Shuffle data<br>2.<br>3. churn_data = churn_data.sample(frac=1).reset_index(drop=True)<br>4.<br>5. # Separate dependent varaible from independent varaibles<br>6.<br>7. X = churn_data.drop(columns=[&quot;churn&quot;], axis=1)<br>8. y = churn_data[&quot;churn&quot;]</code></pre>
+<p>Our dependent variable is now separate from our independent variables. However, we still need to deal with the fact that the data type of &quot;y&quot; is &quot;bool&quot;. The easiest way to deal with this is to just encode &quot;y&quot; as a binary variable. &quot;True&quot; will be equal to 1, and &quot;False&quot; will be equal to 0.&nbsp;</p>
+<p>The code that changes the type of our dependent variable is:<br /><br /></p>
+<pre class="language-python"><code>1. # Convert boolean value into a binary one<br>2.<br>3. y = y.astype(int)</code></pre>
+<p>To finish off our preliminary tasks, we will use the train_test_split function from Scikit-learn to separate our data into training data and testing data.<br /><br /></p>
+<pre class="language-python"><code>1. # Create datasets<br>2.<br>3. X_train, X_test, y_train, y_test = train_test_split(X,<br>4.                                                     y,<br>5.                                                     train_size=0.8,<br>6.                                                     test_size=0.2,<br>7.                                                     random_state=1)</code></pre>
+<p>The prerequisites for creating our preprocessing function have been met. Let&#39;s create two versions of our preprocessing function. They are mostly the same. The only difference lies in how the data is scaled. &nbsp;</p>
+<p>First, we will create the function that preprocesses our training data:<br /><br /></p>
+<pre class="language-python"><code>1. # Training data preprocessing function<br>2.<br>3. def train_preprocessing(df,<br>4.                 numeric_columns,<br>5.                 categorical_columns,<br>6.                 scaler):<br>7.<br>8.     new_churn = df[set(numeric_columns + categorical_columns)].copy()<br>9.     new_churn[numeric_columns] = scaler.fit_transform(new_churn[numeric_columns])<br>10.     churn_dummies = pd.get_dummies(new_churn[categorical_columns], drop_first=True)<br>11.     new_churn = pd.concat([new_churn, churn_dummies], axis=1)<br>12.     new_churn.drop(categorical_columns, axis=1, inplace = True)<br>13.<br>14.     return new_churn  </code></pre>
+<p>Now we can create the function that preprocesses the data we will use for testing our models.<br /><br /></p>
+<pre class="language-python"><code>1. # Testing data prepreocessing function<br>2.<br>3. def test_preprocessing(df,<br>4.                 numeric_columns,<br>5.                 categorical_columns,<br>6.                 scaler):<br>7.<br>8.     new_churn = df[set(numeric_columns + categorical_columns)].copy()<br>9.     new_churn[numeric_columns] = scaler.transform(new_churn[numeric_columns])<br>10.     churn_dummies = pd.get_dummies(new_churn[categorical_columns], drop_first=True)<br>11.     new_churn = pd.concat([new_churn, churn_dummies], axis=1)<br>12.     new_churn.drop(categorical_columns, axis=1, inplace = True)<br>13.<br>14.     return new_churn  </code></pre>
+<p>Now that we have prepared the two functions, let&#39;s preprocess our data.<br /><br /></p>
+<pre class="language-python"><code>1. # Preprocess training data<br>2.<br>3. X_train = train_preprocessing(X_train,<br>4.                               churn_numeric_columns,<br>5.                               churn_categorical_columns,<br>6.                               scaler)<br>7.<br>8. # Preprocess testing data<br>9.<br>10. X_test = test_preprocessing(X_test,<br>11.                             churn_numeric_columns,<br>12.                             churn_categorical_columns,<br>13.                             scaler)  </code></pre>
+<p>With this, we have prepared everything we need. Now we can demonstrate the four parts of MLflow we explained earlier in this article.</p>
+<h3 id="mcetoc_1ftqvmv8j0">&nbsp;</h3>
+<h3 id="mcetoc_1ftqv601218">Set up and Use MLflow&nbsp;</h3>
+<p>After preparing everything we need for preprocessing our data, we can demonstrate how MLflow Tracking works. To do that, we first need to run &quot;mlflow ui&quot; in our terminal.</p>
+<p><br /><img style="display: block; margin-left: auto; margin-right: auto;" src="https://res.cloudinary.com/edlitera/image/upload/c_fill,f_auto/v1643399356/blog/j9mie20n1qojoyqum8mm" alt="command written in terminal" width="419" height="87" />&nbsp;</p>
+<p>As we mentioned earlier when we explained MLflow, we need to set up an experiment. To do that, we need to tell Python where to look, and define the experiment itself.</p>
+<pre class="language-python"><code>1. # Connect to MLflow<br>2.<br>3. mlflow.set_tracking_uri(&quot;<a href="http://localhost:5000">http://localhost:5000</a>&quot;)<br>4. mlflow.set_experiment(&quot;TelecomChurnExperiment&quot;)   </code></pre>
+<p>Since only the default experiment exists for now, the result from running this code will be:<br /><img style="display: block; margin-left: auto; margin-right: auto;" src="https://res.cloudinary.com/edlitera/image/upload/c_fill,f_auto/v1643399396/blog/mfqgnzvafe3t4cs9ciph" alt="info message in MLflow" width="1024" height="47" />&nbsp;</p>
+<p>Following the link given in the tracking, if we open the UI it will look something like this:</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://res.cloudinary.com/edlitera/image/upload/c_fill,f_auto/v1643399444/blog/rvkmi9qiljlvmgc1o1sw" alt="MLflow user interface" width="1185" height="494" /></p>
+<p>As you can see above, there are two experiments in the UI currently. One is the default experiment, and the other is the new experiment we just created. For now, both are empty since we haven&#39;t actually created a run. To create a run, we are going to create a model using the default model interface for Python models: the &quot;python_function&quot; flavor. This is a good demonstration of MLflow Models, since it shows we can use flavors to create models. &nbsp;This format will allow us to easily package models. It is self-contained and holds everything needed to load and use a model. It also allows us to easily integrate any model from any tool. For the purposes of this demonstration we are going to use two models: the Logistic Regression model and the XGBoost model. This way we will have two models to compare in our UI. Let&#39;s create the Logistic Regression model first.</p>
+<p>To start off, we need to create a class that will define how our model looks. This will allow us to call on it later when we start creating runs. For the purposes of this example, we are going to create a very simple class. We just need to be able to track the results of our models. The code for creating such a class looks like this:<br /><br /></p>
+<pre class="language-python"><code>1. # Define model<br>2.<br>3. class Churn_Model(mlflow.pyfunc.PythonModel):<br>4.<br>5.     def <strong>init</strong>(self, model):<br>6.         self.model = model<br>7.<br>8.     def predict(self, context, model_input):<br>9.         return self.model.predict(model_input)</code></pre>
+<p>We can use this class for both the Logistic Regression model and the XGBoost model. We could define the environment so that we can later deploy the model on whichever platform we want. Before going ahead with our first run, let&#39;s create a simple YAML file that defines the environment.<br /><br /></p>
+<pre class="language-python"><code>1. # define specific python and package versions for environment<br>2. mlflow_env = {<br>3.  &#39;name&#39;: &#39;mlflow-env&#39;,<br>4.  &#39;channels&#39;: [&#39;defaults&#39;],<br>5.  &#39;dependencies&#39;: [&#39;python=3.6.2&#39;, {&#39;pip&#39;: [&#39;mlflow==1.6.0&#39;,&#39;scikit-learn&#39;]}]<br>6. }  </code></pre>
+<p>Getting back on track, let&#39;s create our first run, which will use a Logistic Regression model.</p>
+<p>The code above specifies the run with the Logistic Regression model. When coding, we first need to specify the parameters we want to use and the model we want to use. Afterwards, since we want to check accuracy and the AUC score, we need to define how we calculate them. We can then define what we want to track and log. Then, we will save the run ID and experiment ID so we have everything we need later on if we choose to deploy our model.&nbsp;<br /><br /></p>
+<pre class="language-python"><code>1. # Define and do run<br>2.<br>3. with mlflow.start_run(run_name=&quot;Churn Prediction model run 1&quot;) as run:<br>4.<br>5.     # Define model parameters<br>6.<br>7.     penalty = &quot;l2&quot;<br>8.<br>9.     # Define model<br>10.<br>11.     log_reg_model = LogisticRegression(solver=&#39;lbfgs&#39;, penalty=penalty)<br>12.     log_reg_model.fit(X_train, y_train)<br>13.<br>14.     y_pred_model = log_reg_model.predict(X_test)<br>15.     predictions_test= log_reg_model.predict_proba(X_test)[:,1]<br>16.<br>17.     accuracy = accuracy_score(y_pred_model, y_test)<br>18.     auc_score = roc_auc_score(y_test, predictions_test)<br>19.<br>20.     # Log parameters<br>21.<br>22.     mlflow.log_param(&quot;penalty&quot;, penalty)<br>23.<br>24.     # Log metrics<br>25.<br>26.     mlflow.log_metric(&quot;accuracy&quot;, accuracy)<br>27.     mlflow.log_metric(&quot;auc_score&quot;, auc_score)<br>28.<br>29.<br>30.     # log model with all objects referenced<br>31.<br>32.     pyfunc.log_model(<br>33.         artifact_path = &quot;churn_pyfunc&quot;,<br>34.         python_model = Churn_Model(model=log_reg_model),<br>35.         conda_env = mlflow_env)<br>36.<br>37.     # Save run_id and experiment_id<br>38.<br>39.     run_id = run.info.run_uuid<br>40.     experiment_id = run.info.experiment_id<br>41.<br>42.     # End run<br>43.<br>44.     mlflow.end_run()  </code></pre>
+<p>After running the code, we can see our run by refreshing the page of the MLflow UI. We will switch the view mode to the compact one because we will have just two models in this demonstration:</p>
+<p><br /><img style="display: block; margin-left: auto; margin-right: auto;" src="https://res.cloudinary.com/edlitera/image/upload/c_fill,f_auto/v1643399556/blog/ctbce9pskjohmqzg2hf5" alt="new experiment in MLflow" width="1427" height="396" />&nbsp;</p>
+<p>Our results are relatively good. Let&#39;s create the XGBoost run to demonstrate how we can compare them:<br /><br /></p>
+<pre class="language-python"><code>1. # Define and do run<br>2.<br>3. with mlflow.start_run(run_name=&quot;Churn Prediction model run 2&quot;) as run:<br>4.<br>5.     #Define model parameters<br>6.<br>7.     n_estimators = 1500<br>8.     learning_rate = 0.1<br>9.     max_depth = 4<br>10.<br>11.     # Define model<br>12.<br>13.     xgb_model = XGBClassifier(learning_rate=learning_rate,<br>14.                               n_estimators=n_estimators,<br>15.                               max_depth=max_depth)<br>16.<br>17.     xgb_model.fit(X_train, y_train)<br>18.<br>19.     y_pred_model = xgb_model.predict(X_test)<br>20.     predictions_test= xgb_model.predict_proba(X_test)[:,1]<br>21.<br>22.     accuracy = accuracy_score(y_pred_model, y_test)<br>23.     auc_score = roc_auc_score(y_test, predictions_test)<br>24.<br>25.     # Log parameters<br>26.<br>27.     mlflow.log_param(&quot;n_estimators&quot;, n_estimators)<br>28.     mlflow.log_param(&quot;learning_rate&quot;, learning_rate)<br>29.     mlflow.log_param(&quot;max_depth&quot;, max_depth)<br>30.<br>31.     # Log metrics<br>32.<br>33.     mlflow.log_metric(&quot;accuracy&quot;, accuracy)<br>34.     mlflow.log_metric(&quot;auc_score&quot;, auc_score)<br>35.<br>36.     # log model with all objects referenced<br>37.<br>38.     pyfunc.log_model(<br>39.         artifact_path = &quot;churn_pyfunc&quot;,<br>40.         python_model = Churn_Model(model=xgb_model),<br>41.         conda_env = mlflow_env)<br>42.<br>43.     # Save run_id and experiment_id<br>44.<br>45.     run_id = run.info.run_uuid<br>46.     experiment_id = run.info.experiment_id<br>47.<br>48.     # End run<br>49.<br>50.     mlflow.end_run()  </code></pre>
+<p>Let&#39;s take a look at our UI now:</p>
+<p><br /><img style="display: block; margin-left: auto; margin-right: auto;" src="https://res.cloudinary.com/edlitera/image/upload/c_fill,f_auto/v1643399606/blog/qu5wkwawuzcnjzan5vvw" alt="XGBoost results" width="1303" height="469" />&nbsp;</p>
+<p style="text-align: left;">We see that our XGBoost model performs much better. The UI can also compare runs:<br /><br /><img style="display: block; margin-left: auto; margin-right: auto;" src="https://res.cloudinary.com/edlitera/image/upload/c_fill,f_auto/v1643399655/blog/rielfemeoddgdw7lsmov" alt="Comparing 2 runs" width="1270" height="453" />&nbsp;</p>
+<p>This option to compare runs is more useful when we have multiple runs with the same model but different hyperparameters. A potentially more useful option is looking at the details of the run with the XGBoost model. We can already see most of these details since we didn&#39;t use special tags and similar things, but we can also see the artifacts of that particular run.</p>
+<p><br /><img style="display: block; margin-left: auto; margin-right: auto;" src="https://res.cloudinary.com/edlitera/image/upload/c_fill,f_auto/v1643399701/blog/rghluxxs5qkvornr3zh4" alt="artifacts of a MLmodel" width="1383" height="337" />&nbsp;</p>
+<p>Here, we can easily see our model in the ML model format. We can also see the conda environment as a YAML file. When we have a run we are satisfied with, we can transition that run into a model in the MLflow Model Registry. We do this by clicking on the upper right box in the artifacts section:<br /><img style="display: block; margin-left: auto; margin-right: auto;" src="https://res.cloudinary.com/edlitera/image/upload/c_fill,f_auto/v1643399741/blog/p5ryu0gixpkcpgknvksk" alt="artifacts section" width="1373" height="140" /></p>
+<p>&nbsp;</p>
+<p>It will then ask us if we want to create a new model. Since we don&#39;t have a model, we will create a new one.</p>
+<p><br /><img style="display: block; margin-left: auto; margin-right: auto;" src="https://res.cloudinary.com/edlitera/image/upload/c_fill,f_auto/v1643399811/blog/gmnzbcp6n71dejjsqvhz" alt="create a new model" width="493" height="275" /><br />&nbsp;</p>
+<p>There is one potential problem that can arise. The models can&#39;t be saved anywhere we want. Basically, if we try to just save a run to the folder with our Jupyter notebooks, this error pops up:</p>
+<p><br /><img style="display: block; margin-left: auto; margin-right: auto;" src="https://res.cloudinary.com/edlitera/image/upload/c_fill,f_auto/v1643399850/blog/bdektp5h80onlrshlnnp" alt="MLflow error" width="1347" height="56" />&nbsp;</p>
+<p>This means that we need to have a valid scheme to use the MLflow Model Registry. The reason for that is very simple, and can be seen in the image below:</p>
+<p><br /><img style="display: block; margin-left: auto; margin-right: auto;" src="https://res.cloudinary.com/edlitera/image/upload/c_fill,f_auto/v1643399899/blog/qwcbjfwskvyjswcz3pd8" alt="a Jupyter notebook folder" width="936" height="291" /></p>
+<p>This is what a Jupyter notebook folder looks like after only 4 runs. Even if we tagged models perfectly and made sure that the names say the reason for a particular run, our folder would quickly become unusable. Because of that, some type of database system is necessary to house all of our runs.</p>
+<p>This wraps up our demonstration of MLflow. The only aspect we didn&#39;t touch on is deployment. However, we will demonstrate that in the next article in this series, which explains the way we leverage AWS for MLOps, including model deployment via AWS. This is also the optimal way to deploy MLflow models.</p>
+<h2 id="mcetoc_1ftqv601219"><br />Conclusion</h2>
+<p>In this article, we explained the four integral modules of MLflow. Using them, we can create, for the most part, a full machine learning workflow. Perhaps the best thing about MLflow is that it integrates so easily with other tools that it can cover its deficiencies very easily, which makes MLflow one of the most reliable tools for MLOps. Aside from its flexibility, it is relatively easy to use. Although it is not perfect, and needs some complementary tools (such as tools that will facilitate deployment), MLflow stands as one of the most complete options to choose from when deciding which platform to use for MLOps. Therefore, we recommend MLflow to every team that looks forward to creating their own MLOps workflow.</p>
+    </div>
+  </div>
+</section>
+</body>
+</html>
